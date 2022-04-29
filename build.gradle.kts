@@ -21,10 +21,6 @@ dependencies {
 
     //Yaml
     implementation("com.charleskorn.kaml","kaml","0.43.0")
-
-    //Database
-    implementation("org.jetbrains.exposed","exposed-core","0.38.2")
-    implementation("org.jetbrains.exposed", "exposed-jdbc", "0.38.2")
 }
 
 val jar by tasks.getting(Jar::class) {
