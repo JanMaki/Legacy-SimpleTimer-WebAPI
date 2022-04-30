@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.run.BootRun
+
 plugins {
     id("org.springframework.boot") version "2.6.7"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
@@ -13,6 +15,7 @@ version = "0.0.0"
 
 repositories {
     mavenCentral()
+    gradlePluginPortal()
 }
 
 dependencies {
@@ -21,6 +24,8 @@ dependencies {
 
     //Yaml
     implementation("com.charleskorn.kaml","kaml","0.43.0")
+
+    implementation("com.bmuschko","gradle-tomcat-plugin","2.7.0")
 }
 
 val jar by tasks.getting(Jar::class) {
@@ -35,4 +40,8 @@ val jar by tasks.getting(Jar::class) {
     )
 
     exclude("META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA")
+}
+
+tasks.named<BootRun>("bootRun") {
+    mainClass.set("dev.simpletimer.simpletimer_webapi.SimpleTimerWebAPI")
 }

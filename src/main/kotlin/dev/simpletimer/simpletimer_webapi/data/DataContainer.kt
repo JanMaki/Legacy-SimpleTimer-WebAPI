@@ -4,19 +4,12 @@ import com.charleskorn.kaml.Yaml
 import dev.simpletimer.simpletimer_webapi.data.config.ConfigData
 import dev.simpletimer.simpletimer_webapi.data.database.ChannelData
 import java.io.File
-import java.nio.file.Paths
 
 /**
  * データのコンテナ
  *
  */
 object DataContainer {
-    //jarがあるディレクトリ
-    private val parentDirectory: File =
-        File(Paths.get(javaClass.protectionDomain.codeSource.location.toURI()).toString()).parentFile
-
-    //コンフィグを保管するファイル
-    private val configFile = File(parentDirectory, "config.yml")
 
     //コンフィグ
     val config: ConfigData
@@ -25,6 +18,8 @@ object DataContainer {
     private val channelDataList = mutableListOf<ChannelData>()
 
     init {
+        val configFile = File("config.yml")
+
         //ファイルがあるかを確認
         if (!configFile.exists()) {
             //ファイルを作成

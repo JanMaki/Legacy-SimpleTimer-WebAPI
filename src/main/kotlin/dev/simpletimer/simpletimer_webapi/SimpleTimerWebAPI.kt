@@ -8,6 +8,7 @@ import org.springframework.boot.runApplication
  * メインクラス
  *
  */
+@SpringBootApplication
 class SimpleTimerWebAPI {
     companion object {
         /**
@@ -21,15 +22,8 @@ class SimpleTimerWebAPI {
             DataContainer
 
             //アプリケーションを開始
-            runApplication<SimpleTimerWebApiApplication>(*args)
+            runApplication<SimpleTimerWebAPI>(*args)
         }
 
     }
-
-    /**
-     * アプリケーション
-     *
-     */
-    @SpringBootApplication
-    class SimpleTimerWebApiApplication
 }
