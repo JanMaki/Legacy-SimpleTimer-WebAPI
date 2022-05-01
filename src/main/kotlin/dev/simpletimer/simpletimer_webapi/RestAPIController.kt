@@ -27,15 +27,16 @@ class RestAPIController {
      * タイマーのデータを更新する
      *
      * @param token トークン
-     * @param channelData チャンネルのデータ
+     * @param channelDataList チャンネルのデータのList
      */
     @PutMapping("/timers/{token}")
-    fun putTimer(@PathVariable("token") token: String, @RequestBody channelData: ChannelData) {
-
+    fun putTimer(@PathVariable("token") token: String, @RequestBody channelDataList: List<ChannelData>) {
         //tokenが有効化を確認
         if (!DataContainer.config.tokens.contains(token)) return
 
         //チャンネルのデータを更新
-        DataContainer.setChannelData(channelData)
+        channelDataList.forEach {
+            DataContainer.setChannelData(it)
+        }
     }
 }
